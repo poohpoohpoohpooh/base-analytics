@@ -463,7 +463,7 @@ export function BaseActionButtons() {
   return (
     <>
       <section
-        className="relative overflow-hidden rounded-2xl border border-blue-400/25 bg-slate-950/70 p-6 shadow-[0_0_46px_rgba(37,99,235,0.26)] backdrop-blur-xl"
+        className="relative overflow-hidden rounded-2xl border border-cyan-100/50 bg-[#082f78]/60 p-6 shadow-[0_0_62px_rgba(0,82,255,0.42)] backdrop-blur-xl"
         style={actionSectionStyle}
       >
         <div
@@ -561,7 +561,7 @@ export function BaseActionButtons() {
         </div>
 
         <div
-          className="mt-5 flex items-start gap-3 rounded-xl border border-cyan-200/20 bg-blue-950/30 p-4 text-sm text-blue-100/80"
+          className="mt-5 flex items-start gap-3 rounded-xl border border-cyan-100/45 bg-blue-400/16 p-4 text-sm text-white/90"
           style={safetyNoticeStyle}
         >
           <ShieldCheck className="mt-0.5 size-5 shrink-0 text-cyan-200" aria-hidden="true" />
@@ -625,7 +625,7 @@ export function BaseActionButtons() {
 function ActionStat({ label, value }: { label: string; value: bigint }) {
   return (
     <div
-      className="rounded-xl border border-blue-400/20 bg-slate-900/60 p-4"
+      className="rounded-xl border border-cyan-100/42 bg-gradient-to-br from-blue-500/20 to-cyan-400/10 p-4"
       style={statCardStyle}
     >
       <p
@@ -642,16 +642,16 @@ function ActionStat({ label, value }: { label: string; value: bigint }) {
 }
 
 const primaryButtonClass =
-  "inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-cyan-100/35 bg-blue-500 px-4 text-sm font-bold text-white shadow-[0_0_28px_rgba(59,130,246,0.46)] transition hover:-translate-y-0.5 hover:bg-cyan-400 disabled:cursor-not-allowed disabled:border-blue-200/10 disabled:bg-slate-700 disabled:text-blue-100/60 disabled:shadow-none";
+  "inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-cyan-50/50 bg-gradient-to-r from-[#0052FF] via-[#1E7BFF] to-[#38BDF8] px-4 text-sm font-bold text-white shadow-[0_0_38px_rgba(0,82,255,0.58)] transition hover:-translate-y-0.5 hover:brightness-110 disabled:cursor-not-allowed disabled:border-blue-200/25 disabled:bg-blue-900/55 disabled:text-blue-50/65 disabled:shadow-none";
 
 const actionSectionStyle: CSSProperties = {
   position: "relative",
   overflow: "hidden",
   borderRadius: "24px",
-  border: "1px solid rgba(96, 165, 250, 0.25)",
-  background: "rgba(2, 6, 23, 0.70)",
+  border: "1px solid rgba(165, 243, 252, 0.5)",
+  background: "rgba(8, 47, 120, 0.62)",
   padding: "24px",
-  boxShadow: "0 0 46px rgba(37, 99, 235, 0.26)",
+  boxShadow: "0 0 62px rgba(0, 82, 255, 0.42)",
   backdropFilter: "blur(18px)",
   color: "#eaf2ff"
 };
@@ -715,16 +715,17 @@ const statsGridStyle: CSSProperties = {
 
 const statCardStyle: CSSProperties = {
   borderRadius: "16px",
-  border: "1px solid rgba(96, 165, 250, 0.20)",
-  background: "rgba(15, 23, 42, 0.60)",
+  border: "1px solid rgba(165, 243, 252, 0.42)",
+  background:
+    "linear-gradient(135deg, rgba(0, 82, 255, 0.20), rgba(56, 189, 248, 0.10))",
   padding: "16px",
   boxShadow:
-    "0 0 22px rgba(37, 99, 235, 0.14), inset 0 0 16px rgba(59, 130, 246, 0.08)"
+    "0 0 28px rgba(0, 82, 255, 0.30), inset 0 0 20px rgba(125, 211, 252, 0.16)"
 };
 
 const statLabelStyle: CSSProperties = {
   margin: 0,
-  color: "rgba(191, 219, 254, 0.72)",
+  color: "rgba(165, 243, 252, 0.82)",
   fontSize: "12px",
   fontWeight: 700,
   letterSpacing: "0.14em",
@@ -745,10 +746,10 @@ const safetyNoticeStyle: CSSProperties = {
   gap: "12px",
   marginTop: "20px",
   borderRadius: "14px",
-  border: "1px solid rgba(103, 232, 249, 0.2)",
-  background: "rgba(23, 37, 84, 0.28)",
+  border: "1px solid rgba(103, 232, 249, 0.46)",
+  background: "rgba(30, 123, 255, 0.17)",
   padding: "14px 16px",
-  color: "rgba(219, 234, 254, 0.82)",
+  color: "rgba(255, 255, 255, 0.94)",
   fontSize: "13px",
   lineHeight: 1.65
 };
@@ -801,13 +802,13 @@ function getActionButtonStyle(disabled: boolean): CSSProperties {
       ? "1px solid rgba(147, 197, 253, 0.12)"
       : "1px solid rgba(207, 250, 254, 0.35)",
     background: disabled
-      ? "#334155"
-      : "linear-gradient(90deg, #3b82f6 0%, #22d3ee 100%)",
+      ? "#315985"
+      : "linear-gradient(90deg, #0052FF 0%, #1E7BFF 52%, #38BDF8 100%)",
     color: disabled ? "rgba(219, 234, 254, 0.60)" : "#ffffff",
     padding: "0 16px",
     fontSize: "14px",
     fontWeight: 800,
-    boxShadow: disabled ? "none" : "0 0 28px rgba(59, 130, 246, 0.46)",
+    boxShadow: disabled ? "none" : "0 0 32px rgba(0, 82, 255, 0.52)",
     cursor: disabled ? "not-allowed" : "pointer",
     opacity: disabled ? 0.72 : 1,
     transition: "transform 160ms ease, filter 160ms ease, background 160ms ease"

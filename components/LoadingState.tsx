@@ -6,16 +6,16 @@ import { ASSETS } from "@/lib/assets";
 export function LoadingState() {
   return (
     <section
-      className="relative overflow-hidden rounded-3xl border border-cyan-200/40 bg-[rgba(5,15,35,0.78)] p-6 shadow-[0_0_60px_rgba(34,211,238,0.22)] backdrop-blur-xl"
+      className="relative overflow-hidden rounded-3xl border border-cyan-100/58 bg-[rgba(8,47,120,0.62)] p-6 shadow-[0_0_68px_rgba(56,189,248,0.38)] backdrop-blur-xl"
       style={{
         position: "relative",
         overflow: "hidden",
         borderRadius: "24px",
-        border: "1px solid rgba(165,243,252,0.4)",
-        background: "rgba(5,15,35,0.78)",
+        border: "1px solid rgba(165,243,252,0.58)",
+        background: "rgba(8,47,120,0.62)",
         padding: "24px",
         color: "#ffffff",
-        boxShadow: "0 0 60px rgba(34,211,238,0.22)"
+        boxShadow: "0 0 68px rgba(56,189,248,0.38)"
       }}
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-cyan-100/80 shadow-[0_0_28px_rgba(125,211,252,0.8)]" />
@@ -49,7 +49,7 @@ export function LoadingState() {
         </div>
         <div>
           <p className="text-xl font-semibold text-white" style={{ color: "#ffffff", fontSize: "20px", fontWeight: 700 }}>Analyzing on-chain activity...</p>
-          <p className="mt-2 text-sm text-blue-100/60" style={{ marginTop: "8px", color: "rgba(219,234,254,0.62)", fontSize: "14px" }}>
+          <p className="mt-2 text-sm text-blue-50/76" style={{ marginTop: "8px", color: "rgba(239,246,255,0.78)", fontSize: "14px" }}>
             BASEちゃん is checking your wallet.
           </p>
         </div>

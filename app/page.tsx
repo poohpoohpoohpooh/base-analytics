@@ -146,11 +146,11 @@ export default function Home() {
 
   return (
     <main
-      className="min-h-screen overflow-x-hidden bg-[#020817] text-slate-50 antialiased"
+      className="min-h-screen overflow-x-hidden bg-transparent text-slate-50 antialiased"
       style={{
         minHeight: "100vh",
         overflowX: "hidden",
-        background: "#020817",
+        background: "transparent",
         color: "#f8fbff"
       }}
     >
@@ -177,7 +177,7 @@ export default function Home() {
 
         {notice ? (
           <div
-            className="flex items-center gap-3 rounded-2xl border border-cyan-200/35 bg-cyan-300/12 px-4 py-3 text-sm font-semibold text-cyan-100 shadow-[0_0_34px_rgba(34,211,238,0.24)]"
+            className="flex items-center gap-3 rounded-2xl border border-cyan-100/50 bg-blue-400/20 px-4 py-3 text-sm font-semibold text-white shadow-[0_0_38px_rgba(56,189,248,0.34)]"
             data-no-capture="true"
           >
             <Sparkles className="size-4 shrink-0" aria-hidden="true" />
@@ -236,7 +236,8 @@ function buildMetricItems(result: AnalyzeResponse): MetricItem[] {
       value: withUnit(metrics.ethBalance, "ETH"),
       subtext: "Base Mainnet",
       icon: Wallet,
-      tone: "blue"
+      iconGradient: "from-[#0052FF] to-[#38BDF8]",
+      iconGlow: "shadow-[0_0_28px_rgba(56,189,248,0.50)]"
     },
     {
       label: "Days on Base",
@@ -244,98 +245,112 @@ function buildMetricItems(result: AnalyzeResponse): MetricItem[] {
       subtext:
         metrics.firstTransactionAt ? `Since ${formatDate(metrics.firstTransactionAt)}` : "First seen N/A",
       icon: Gauge,
-      tone: "amber"
+      iconGradient: "from-[#38BDF8] to-[#2DD4BF]",
+      iconGlow: "shadow-[0_0_28px_rgba(45,212,191,0.42)]"
     },
     {
       label: "Active Days",
       value: displayMetric(metrics.activeDays),
       subtext: activeDayRate,
       icon: Activity,
-      tone: "blue"
+      iconGradient: "from-[#1E7BFF] to-[#8B5CF6]",
+      iconGlow: "shadow-[0_0_28px_rgba(99,102,241,0.46)]"
     },
     {
       label: "Current Streak",
       value: displayMetric(metrics.currentStreak),
       subtext: "Days",
       icon: Flame,
-      tone: "rose"
+      iconGradient: "from-[#F97316] to-[#FACC15]",
+      iconGlow: "shadow-[0_0_28px_rgba(249,115,22,0.44)]"
     },
     {
       label: "Longest Streak",
       value: displayMetric(metrics.longestStreak),
       subtext: "Days",
       icon: Trophy,
-      tone: "cyan"
+      iconGradient: "from-[#8B5CF6] to-[#EC4899]",
+      iconGlow: "shadow-[0_0_28px_rgba(236,72,153,0.40)]"
     },
     {
       label: "Total TXs",
       value: displayMetric(metrics.totalTransactions),
       subtext: "Transactions",
       icon: Hash,
-      tone: "blue"
+      iconGradient: "from-[#06B6D4] to-[#0052FF]",
+      iconGlow: "shadow-[0_0_28px_rgba(6,182,212,0.46)]"
     },
     {
       label: "Swap-like TXs",
       value: displayMetric(metrics.tokenSwaps),
       subtext: "Estimated",
       icon: Repeat2,
-      tone: "rose"
+      iconGradient: "from-[#22C55E] to-[#10B981]",
+      iconGlow: "shadow-[0_0_28px_rgba(16,185,129,0.42)]"
     },
     {
       label: "Unique Tokens",
       value: displayMetric(metrics.uniqueTokens),
       subtext: "Tokens",
       icon: Coins,
-      tone: "cyan"
+      iconGradient: "from-[#FACC15] to-[#FB923C]",
+      iconGlow: "shadow-[0_0_28px_rgba(250,204,21,0.40)]"
     },
     {
       label: "DeFi-like TXs",
       value: displayMetric(defiInteractions),
       subtext: "Allowlist",
       icon: BarChart3,
-      tone: "blue"
+      iconGradient: "from-[#EC4899] to-[#8B5CF6]",
+      iconGlow: "shadow-[0_0_28px_rgba(236,72,153,0.42)]"
     },
     {
       label: "NFTs Held",
       value: displayMetric(metrics.nftsHeld),
       subtext: "NFTs",
       icon: ImageIcon,
-      tone: "blue"
+      iconGradient: "from-[#A855F7] to-[#38BDF8]",
+      iconGlow: "shadow-[0_0_28px_rgba(168,85,247,0.42)]"
     },
     {
       label: "Contract TX",
       value: displayMetric(metrics.contractTransactions),
       subtext: "Transactions",
       icon: Layers,
-      tone: "violet"
+      iconGradient: "from-[#6366F1] to-[#1E7BFF]",
+      iconGlow: "shadow-[0_0_28px_rgba(99,102,241,0.44)]"
     },
     {
       label: "Unique Contracts",
       value: displayMetric(metrics.uniqueContracts),
       subtext: "Contracts",
       icon: Shield,
-      tone: "green"
+      iconGradient: "from-[#14B8A6] to-[#67E8F9]",
+      iconGlow: "shadow-[0_0_28px_rgba(20,184,166,0.42)]"
     },
     {
       label: "Avg TX / Day",
       value: displayMetric(metrics.avgTxPerDay),
       subtext: "Transactions",
       icon: Sparkles,
-      tone: "cyan"
+      iconGradient: "from-[#84CC16] to-[#22C55E]",
+      iconGlow: "shadow-[0_0_28px_rgba(132,204,22,0.38)]"
     },
     {
       label: "First Transaction",
       value: formatDate(metrics.firstTransactionAt),
       subtext: "UTC",
       icon: Calendar,
-      tone: "cyan"
+      iconGradient: "from-[#F59E0B] to-[#38BDF8]",
+      iconGlow: "shadow-[0_0_28px_rgba(245,158,11,0.38)]"
     },
     {
       label: "Last Transaction",
       value: formatDate(metrics.lastTransactionAt),
       subtext: "UTC",
       icon: Clock,
-      tone: "green"
+      iconGradient: "from-[#22D3EE] to-[#8B5CF6]",
+      iconGlow: "shadow-[0_0_28px_rgba(34,211,238,0.44)]"
     }
   ];
 }

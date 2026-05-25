@@ -14,12 +14,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className="min-h-screen bg-[#020817] text-slate-100 antialiased"
+        className="min-h-screen bg-[#0A2A66] text-slate-100 antialiased"
         style={{
           margin: 0,
           minHeight: "100vh",
           overflowX: "hidden",
-          background: "#020817",
           color: "#eaf2ff"
         }}
       >

@@ -10,7 +10,7 @@ export function TopContracts({
   contracts: AnalyzeResponse["topContracts"];
 }) {
   return (
-    <section className="rounded-3xl border border-blue-300/40 bg-[rgba(5,15,35,0.74)] p-4 shadow-[0_0_46px_rgba(37,99,235,0.18)] backdrop-blur-xl">
+    <section className="rounded-3xl border border-cyan-100/50 bg-[rgba(8,47,120,0.60)] p-4 shadow-[0_0_58px_rgba(0,82,255,0.34)] backdrop-blur-xl">
       <div className="flex items-center justify-between gap-3">
         <h3 className="font-semibold text-white">Top Used Contracts</h3>
         <Layers className="size-5 text-cyan-100 drop-shadow-[0_0_10px_currentColor]" aria-hidden="true" />
@@ -25,7 +25,7 @@ export function TopContracts({
               href={`https://basescan.org/address/${contract.address}`}
               target="_blank"
               rel="noreferrer"
-              className="flex min-w-0 items-center justify-between gap-3 rounded-2xl border border-blue-300/20 bg-white/[0.045] p-3 transition hover:-translate-y-0.5 hover:border-cyan-200/40 hover:bg-cyan-200/[0.065]"
+              className="flex min-w-0 items-center justify-between gap-3 rounded-2xl border border-cyan-100/35 bg-blue-400/[0.16] p-3 transition hover:-translate-y-0.5 hover:border-cyan-100/60 hover:bg-cyan-200/[0.16]"
             >
               <div className="min-w-0">
                 <p className="text-xs font-semibold text-cyan-100/70">

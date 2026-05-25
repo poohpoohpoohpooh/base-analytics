@@ -10,7 +10,7 @@ export function RecentTransactions({
   transactions: AnalyzeResponse["recentTransactions"];
 }) {
   return (
-    <section className="rounded-3xl border border-blue-300/40 bg-[rgba(5,15,35,0.74)] p-4 shadow-[0_0_46px_rgba(37,99,235,0.18)] backdrop-blur-xl">
+    <section className="rounded-3xl border border-cyan-100/50 bg-[rgba(8,47,120,0.60)] p-4 shadow-[0_0_58px_rgba(0,82,255,0.34)] backdrop-blur-xl">
       <div className="flex items-center justify-between gap-3">
         <h3 className="font-semibold text-white">Recent 10 Transactions</h3>
         <Activity className="size-5 text-cyan-100 drop-shadow-[0_0_10px_currentColor]" aria-hidden="true" />
@@ -32,7 +32,7 @@ export function RecentTransactions({
             </thead>
             <tbody>
               {transactions.map((tx) => (
-                <tr key={tx.hash} className="bg-white/[0.045]">
+                <tr key={tx.hash} className="bg-blue-400/[0.16]">
                   <td className="rounded-l-2xl border-l border-y border-blue-300/20 px-3 py-3">
                     <a
                       href={tx.explorerUrl}
