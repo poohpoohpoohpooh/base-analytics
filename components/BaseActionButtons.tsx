@@ -21,13 +21,15 @@ import {
   encodeFunctionData,
   getAddress,
   type Address,
-  type Hash
+  type Hash,
+  type Hex
 } from "viem";
 import { base, baseSepolia } from "viem/chains";
 import {
   type SuccessReaction,
   SuccessReactionOverlay
 } from "@/components/SuccessReactionOverlay";
+import { appendBaseBuilderCodeSuffix } from "@/lib/baseBuilderCode";
 import { baseIdentityActionsAbi } from "@/lib/baseIdentityActionsAbi";
 import { pickRandom } from "@/lib/pickRandom";
 import {
@@ -370,6 +372,7 @@ export function BaseActionButtons() {
     setPendingAction(actionName);
 
     try {
+      const data = buildActionTransactionData(actionName);
       const hash = (await provider.request({
         method: "eth_sendTransaction",
         params: [
@@ -377,10 +380,7 @@ export function BaseActionButtons() {
             from: walletAddress,
             to: CONTRACT_ADDRESS,
             value: "0x0",
-            data: encodeFunctionData({
-              abi: baseIdentityActionsAbi,
-              functionName: actionName
-            })
+            data
           }
         ]
       })) as Hash;
@@ -620,6 +620,32 @@ export function BaseActionButtons() {
       <SuccessReactionOverlay reaction={currentReaction} />
     </>
   );
+}
+
+function buildActionTransactionData(actionName: ActionName): Hex {
+  const selectorData = encodeFunctionData({
+    abi: baseIdentityActionsAbi,
+    functionName: actionName
+  });
+  const finalData = appendBaseBuilderCodeSuffix(selectorData);
+
+  if (process.env.NODE_ENV !== "production") {
+    const selectorBytes = (selectorData.length - 2) / 2;
+    const finalDataBytes = (finalData.length - 2) / 2;
+
+    console.debug("[Base Builder Code] action calldata", {
+      action: actionName,
+      suffixConfigured: Boolean(
+        process.env.NEXT_PUBLIC_BASE_BUILDER_CODE_SUFFIX?.trim()
+      ),
+      suffixApplied: finalDataBytes > selectorBytes,
+      selectorBytes,
+      suffixBytes: finalDataBytes - selectorBytes,
+      finalDataBytes
+    });
+  }
+
+  return finalData;
 }
 
 function ActionStat({ label, value }: { label: string; value: bigint }) {

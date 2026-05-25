@@ -45,6 +45,29 @@ NEXT_PUBLIC_CHAIN_ID=84532
 
 For Base Mainnet, deploy with `npm run deploy:actions:base` and set `NEXT_PUBLIC_CHAIN_ID=8453`. The frontend will prompt the wallet to connect, switch to the configured chain, send the selected action transaction, wait for the receipt, then refresh `totalCheckIns`, `totalGMs`, and `totalGNs`.
 
+### Builder Code Attribution
+
+To attribute Daily Check-in / GM / GN transactions to this app, copy the ERC-8021
+`dataSuffix` generated for your Builder Code in base.dev and set:
+
+```bash
+NEXT_PUBLIC_BASE_BUILDER_CODE_SUFFIX=0x...
+```
+
+The suffix is public attribution metadata. It is appended only to the fixed action
+transaction calldata, while each transaction continues to send `0 ETH` to
+`NEXT_PUBLIC_BASE_IDENTITY_ACTIONS_ADDRESS`. If the variable is missing or is not
+a valid ERC-8021 suffix, actions are sent without attribution. After sending a
+transaction, verify its input data ends in the repeating `8021` marker in a block
+explorer or use the Base Builder Code validation tool.
+
+For Vercel, add this exact variable name to the `Production` environment and
+redeploy after saving it. `NEXT_PUBLIC_` values are embedded during the Next.js
+production build; adding or changing the suffix does not affect an already-built
+deployment until a new deployment is created.
+
+Reference: https://docs.base.org/apps/builder-codes/app-developers
+
 ## Metric Notes
 
 - `NFTs Held` uses Alchemy NFT API v3 `getNFTsForOwner` on Base Mainnet with `withMetadata=false`. The API is paged with `pageKey`; the app sums `ownedNfts.length` across pages. If the request fails, the value is `N/A`. If the wallet has no NFTs, the value is `0`.
